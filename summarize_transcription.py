@@ -74,7 +74,7 @@ def summarize_transcription(transcription, input_tokens):
             {"role": "system", "content": "You are a financial analyst, PhD economist, CFA with over 20 years of experience, creating concise, factual summaries for investors. Focus on key financial information and business implications."},
             {"role": "user", "content": prompt}
         ],
-        temperature=0.5,  # Lower temperature for more factual output
+        temperature=0.4,  # Lower temperature for more factual output
         max_tokens=max_tokens
     )
 
