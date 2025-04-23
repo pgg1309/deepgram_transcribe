@@ -68,17 +68,37 @@ def summarize_transcription(transcription, input_tokens):
     {transcription}
     """
 
-    response = client.chat.completions.create(
-        model="meta-llama/llama-4-scout:free",
-        messages=[
-            {"role": "system", "content": "You are a financial analyst, PhD economist, CFA with over 20 years of experience, creating concise, factual summaries for investors. Focus on key financial information and business implications."},
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0.4,  # Lower temperature for more factual output
-        max_tokens=max_tokens
-    )
-
-    return response.choices[0].message.content
+    try:
+        print("Making API call to OpenRouter...")
+        response = client.chat.completions.create(
+            model="meta-llama/llama-4-scout:free",
+            messages=[
+                {"role": "system", "content": "You are a financial analyst, PhD economist, CFA with over 20 years of experience, creating concise, factual summaries for investors. Focus on key financial information and business implications."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.4,  # Lower temperature for more factual output
+            max_tokens=max_tokens
+        )
+        
+        print("API Response received")
+        if not response:
+            raise ValueError("API returned no response")
+            
+        if not hasattr(response, 'choices') or not response.choices:
+            raise ValueError("API response missing choices")
+            
+        if not hasattr(response.choices[0], 'message') or not response.choices[0].message:
+            raise ValueError("API response missing message")
+            
+        if not hasattr(response.choices[0].message, 'content'):
+            raise ValueError("API response missing content")
+            
+        return response.choices[0].message.content
+        
+    except Exception as e:
+        print(f"Error during API call: {str(e)}")
+        print(f"API Response: {response if 'response' in locals() else 'No response received'}")
+        raise
 
 def main():
     # File paths

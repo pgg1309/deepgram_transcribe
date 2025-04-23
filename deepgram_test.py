@@ -10,7 +10,7 @@ if not DEEPGRAM_API_KEY:
     raise ValueError("Please set the DEEPGRAM_API_KEY environment variable")
 
 # YouTube URL to process
-YOUTUBE_URL = 'https://www.youtube.com/watch?v=zAkj8tOq3kQ'
+YOUTUBE_URL = 'https://youtu.be/4aQfzDs7RzI?si=MPwtXhkn833vpAYv'
 OUTPUT_FILE = 'transcription.json'
 
 def download_youtube_audio(url):
