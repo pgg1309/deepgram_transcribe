@@ -3,8 +3,10 @@ import json
 import os
 from pathlib import Path
 
-# The API key we created in step 3
-DEEPGRAM_API_KEY = '890ddae32d35d288f55bf4f1af373b0bf8cd371a'
+# Get API key from environment variable
+DEEPGRAM_API_KEY = os.getenv('DEEPGRAM_API_KEY')
+if not DEEPGRAM_API_KEY:
+    raise ValueError("Please set the DEEPGRAM_API_KEY environment variable")
 
 # Configuration
 AUDIO_FOLDER = 'audio_files'  # Folder containing audio files

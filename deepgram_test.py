@@ -4,8 +4,10 @@ import json
 import os
 import time
 
-# The API key we created in step 3
-DEEPGRAM_API_KEY = '890ddae32d35d288f55bf4f1af373b0bf8cd371a'
+# Get API key from environment variable
+DEEPGRAM_API_KEY = os.getenv('DEEPGRAM_API_KEY')
+if not DEEPGRAM_API_KEY:
+    raise ValueError("Please set the DEEPGRAM_API_KEY environment variable")
 
 # YouTube URL to process
 YOUTUBE_URL = 'https://www.youtube.com/watch?v=zAkj8tOq3kQ'
