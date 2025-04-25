@@ -3,6 +3,10 @@ import yt_dlp
 import json
 import os
 import time
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Get API key from environment variable
 DEEPGRAM_API_KEY = os.getenv('DEEPGRAM_API_KEY')
@@ -10,7 +14,7 @@ if not DEEPGRAM_API_KEY:
     raise ValueError("Please set the DEEPGRAM_API_KEY environment variable")
 
 # YouTube URL to process
-YOUTUBE_URL = 'https://youtu.be/4aQfzDs7RzI?si=MPwtXhkn833vpAYv'
+YOUTUBE_URL = 'https://youtu.be/lBIqV5-gHtY?si=ScIiaCQsmhGmICpj'
 OUTPUT_FILE = 'transcription.json'
 
 def download_youtube_audio(url):
@@ -54,14 +58,14 @@ def main():
 
         options = PrerecordedOptions(
             smart_format=True,
-            model="nova-2",
+            model="nova-3",
             language="en-US",
             diarize=True  # Enable speaker diarization
         )
 
         print("Transcribing audio with Deepgram...")
         # Use the new recommended method
-        response = deepgram.listen.rest.v('1').transcribe_file(payload, options)
+        response = deepgram.listen.rest.v("1").transcribe_file(payload, options)
         
         # Save response to file
         with open(OUTPUT_FILE, 'w') as f:

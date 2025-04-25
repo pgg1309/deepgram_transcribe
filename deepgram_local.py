@@ -2,6 +2,10 @@ from deepgram import DeepgramClient, PrerecordedOptions
 import json
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Get API key from environment variable
 DEEPGRAM_API_KEY = os.getenv('DEEPGRAM_API_KEY')
