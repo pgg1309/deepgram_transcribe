@@ -65,6 +65,6 @@ def convert_to_markdown(json_file, output_file):
     print(f"Markdown file created: {output_file}")
 
 if __name__ == '__main__':
-    JSON_FILE = 'transcription.json'
-    OUTPUT_FILE = 'transcription.md'
+    JSON_FILE = 'transcriptions/(Audio) 20250520-1403-03.4527231_transcription.json'
+    OUTPUT_FILE = '(Audio) 20250520-1403-03.4527231_transcription.md'
     convert_to_markdown(JSON_FILE, OUTPUT_FILE) 
