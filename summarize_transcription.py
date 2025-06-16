@@ -106,8 +106,8 @@ def summarize_transcription(transcription, input_tokens):
 
 def main():
     # File paths
-    transcription_file = '(Audio) 20250520-1403-03.4527231_transcription.md'
-    summary_file = '(Audio) 20250520-1403-03.4527231_summary.md'
+    transcription_file = "transcriptions/pimco_transcription.md"
+    summary_file = "pimco_summary.md"
 
     # Read the transcription
     print("Reading transcription file...")
